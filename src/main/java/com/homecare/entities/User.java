@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,6 +25,7 @@ public class User implements Serializable{
 
     @Column(nullable=false, length=200)
     @NotBlank(message = "Please provide Username!")
+    @UniqueElements
     private String username;
 
     @Column(nullable=false, length=200)
@@ -31,6 +34,7 @@ public class User implements Serializable{
 
     @Column(nullable=false, length=200)
     @NotBlank(message = "Please provide phone number!")
+    @UniqueElements
     private String phone;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
