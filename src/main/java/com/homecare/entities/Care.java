@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 // import lombok.AllArgsConstructor;
 
 @Entity
@@ -26,7 +27,7 @@ public class Care implements Serializable {
     private String description;
     
     @Column(nullable=false)
-    @NotBlank(message = "Please provide Care's price!")
+    @NotNull
     private BigDecimal price;
 
     public Long getCareId() {
