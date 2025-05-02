@@ -37,4 +37,24 @@ public class CareServices {
         return new careResponseDto(itemSaved.getCareId(), itemSaved.getDescription(),itemSaved.getName(), itemSaved.getPrice());
 
     }
+
+    public careResponseDto updateCare (Long id, careRequestDto request){
+        Care care = careRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Care dengan ID-"+id+" tidak ditemukan."));
+        
+        care.setDescription(request.getDescription());
+        care.setName(request.getName());
+        care.setPrice(request.getPrice());
+
+        Care updated = careRepository.save(care);
+        return new careResponseDto(updated.getCareId(), updated.getDescription(),updated.getName(), updated.getPrice());
+    }
+    public String deleteCare (Long id){
+        Care care = careRepository.findById(id)
+            .orElseThrow(()->new RuntimeException("Care dengan ID-"+id+" tidak ditemukan"));
+        
+        careRepository.delete(care);
+        return "Care dengan ID-"+id+" berhasil dihapus";
+    }
+    
 }
