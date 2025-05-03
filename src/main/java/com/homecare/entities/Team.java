@@ -36,6 +36,9 @@ public class Team implements Serializable {
         this.phone = phone;
     }
 
+    public Team() {
+    }
+
     public Long getTeamID() {
         return teamID;
     }

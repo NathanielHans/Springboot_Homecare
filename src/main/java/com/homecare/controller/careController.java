@@ -41,7 +41,6 @@ public class careController {
 
     @PutMapping("/{id}")
     public ResponseEntity<careResponseDto> updateCare(@PathVariable Long id, @RequestBody @Valid careRequestDto request) {
-        //TODO: process PUT request
         careResponseDto updateCare = careServices.updateCare(id, request);
         return ResponseEntity.ok(updateCare);
     }
