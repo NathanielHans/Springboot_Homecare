@@ -37,23 +37,28 @@ public class User implements Serializable{
     @UniqueElements
     private String phone;
 
+    private String role;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Booking> bookings = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
-    
-
-    public User(Long userId, @NotBlank(message = "Please provide Username!") String username,
-            @NotBlank(message = "Please provide passwords!") String password,
-            @NotBlank(message = "Please provide phone number!") String phone, List<Booking> bookings) {
-        this.userId = userId;
-        this.username = username;
+    public User(String password, String phone, String role, Long userId, String username) {
         this.password = password;
         this.phone = phone;
-        this.bookings = bookings;
+        this.role = role;
+        this.userId = userId;
+        this.username = username;
     }
+
+    public User() {
+    }
+
+    
+
+    
 
     public Long getUserId() {
         return userId;
@@ -101,6 +106,14 @@ public class User implements Serializable{
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
 }
