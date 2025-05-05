@@ -1,4 +1,4 @@
-package com.homecare.sevices;
+package com.homecare.services;
 
 import java.util.List;
 import java.util.stream.Collectors;

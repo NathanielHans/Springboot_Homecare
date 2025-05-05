@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.homecare.dto.Team.teamRequestDto;
 import com.homecare.dto.Team.teamResponseDto;
-import com.homecare.sevices.TeamServices;
+import com.homecare.services.TeamServices;
 
 
 

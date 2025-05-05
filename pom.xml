@@ -120,7 +120,7 @@
 	</build>
 
 	<dependencyManagement>
-		<dependencies>
+		<!-- <dependencies>
 			<dependency>
 				<groupId>com.vmware.tanzu.springcloudgateway.extensions</groupId>
 				<artifactId>extensions-bom</artifactId>
@@ -128,6 +128,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-		</dependencies>
+		</dependencies> -->
 	</dependencyManagement>
 </project>

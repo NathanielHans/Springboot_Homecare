@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.homecare.dto.Care.careRequestDto;
 import com.homecare.dto.Care.careResponseDto;
-import com.homecare.sevices.CareServices;
+import com.homecare.services.CareServices;
 
 import jakarta.validation.Valid;
 
