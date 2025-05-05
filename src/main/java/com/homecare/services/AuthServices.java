@@ -1,4 +1,4 @@
-package com.homecare.sevices;
+package com.homecare.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,17 +18,24 @@ public class AuthServices {
     @Autowired private JwtServices jwtServices;
     @Autowired private CustomUserDetailsServices userDetailsServices;
 
-    public authResponseDto register(registerRequestDto request){
+    public String register(registerRequestDto request){
+        // Check if username already exists
+        if (isUsernameTaken(request.getUsername())) {
+            throw new IllegalArgumentException("Username is already taken");
+        }
+
+        // Check if phone number already exists
+        if (isPhoneTaken(request.getPhone())) {
+            throw new IllegalArgumentException("Phone number is already taken");
+        }
         User user = new User();
         user.setUsername(request.getUsername());
         user.setPassword(encoder.encode(request.getPassword()));
         user.setPhone(request.getPhone());
         user.setRole("Role_User");
 
-        userRepository.save(user);
-        UserDetails userDetail = userDetailsServices.loadUserByUsername(user.getUsername());
-        String token = jwtServices.generateToken(userDetail); 
-        return new authResponseDto(token);
+        userRepository.save(user); 
+        return "Register Success!";
     }
 
     public authResponseDto login(loginRequestDto request){
@@ -40,4 +47,11 @@ public class AuthServices {
         return new authResponseDto(token);
     }
 
+    public boolean isUsernameTaken(String username) {
+        return userRepository.existsByUsername(username);
+    }
+    
+    public boolean isPhoneTaken(String phone) {
+        return userRepository.existsByPhone(phone);
+    }
 }
