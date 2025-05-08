@@ -21,10 +21,13 @@ public class Booking {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
+    
     @ManyToOne
     @JoinColumn(name = "careId", nullable = false)
     private Care care;
-
+    
+    public Booking() {
+    }
     public Booking(String bookingDate, Care care, Long id, User user) {
         this.bookingDate = bookingDate;
         this.care = care;
